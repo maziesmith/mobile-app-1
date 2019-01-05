@@ -26,7 +26,6 @@ public class ApiUtil {
         Uri uri = Uri.parse(API_URL)
                 .buildUpon()
                 .appendQueryParameter(QUERY_PARAMETER, title)
-                .appendQueryParameter(KEY, API_KEY)
                 .build();
 
         try {

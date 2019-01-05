@@ -1,10 +1,12 @@
 package com.example.oanac.recipes;
 
+import android.net.Uri;
 import android.util.Log;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -13,12 +15,18 @@ public class ApiUtil {
 
     public static final String API_URL =
             "https://www.googleapis.com/books/v1/volumes/";
+    public static final String QUERY_PARAMETER =
+            "q";
 
     public static URL buildApiUrl(String title) {
-        String fullApiUrl = API_URL + "?q=" + title;
         URL url = null;
+        Uri uri = Uri.parse(API_URL)
+                .buildUpon()
+                .appendQueryParameter(QUERY_PARAMETER, title)
+                .build();
+
         try {
-            url = new URL(fullApiUrl);
+            url = new URL(uri.toString());
         }
         catch (Exception e) {
             e.printStackTrace();

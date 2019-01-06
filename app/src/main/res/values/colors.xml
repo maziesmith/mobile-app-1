@@ -2,5 +2,9 @@
 <resources>
     <color name="colorPrimary">#F98866</color>
     <color name="colorPrimaryDark">#B00000</color>
+    <color name="colorSecondaryDark">#F98866</color>
+    <color name="colorThirdDark">#FF8866</color>
     <color name="colorAccent">#80BD9E</color>
+    <color name="secColorAccent">#80BD9E</color>
+    <color name="thiColorAccent">#80BD9E</color>
 </resources>

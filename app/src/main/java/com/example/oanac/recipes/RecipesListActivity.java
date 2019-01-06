@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.net.URL;
+import java.util.ArrayList;
 
 public class RecipesListActivity extends AppCompatActivity {
     private ProgressBar dataLoadingProgress;
@@ -57,6 +58,15 @@ public class RecipesListActivity extends AppCompatActivity {
                 tvError.setVisibility(View.INVISIBLE);
                 tvResult.setVisibility(View.VISIBLE);
             }
+
+            ArrayList<Recipe> recipes = ApiUtil.getRecipesFromJson(result);
+            String resultString = "";
+            for (Recipe r : recipes) {
+                resultString += resultString + r.title + "\n" +
+                        r.publishedDate + "\n\n";
+            }
+
+            tvResult.setText(resultString);
         }
 
         protected void onPreExecute() {

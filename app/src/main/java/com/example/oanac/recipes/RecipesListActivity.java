@@ -1,8 +1,10 @@
 package com.example.oanac.recipes;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -13,12 +15,17 @@ import java.util.ArrayList;
 
 public class RecipesListActivity extends AppCompatActivity {
     private ProgressBar dataLoadingProgress;
+    private RecyclerView rvRecipies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipes_list);
         dataLoadingProgress = (ProgressBar)findViewById(R.id.pbLoading);
+        rvRecipies = (RecyclerView)findViewById(R.id.rvRecipes);
+        LinearLayoutManager recipesLayoutManager = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false);
+    rvRecipies.setLayoutManager(recipesLayoutManager);
         try {
             URL bookUrl = ApiUtil.buildApiUrl("cooking");
             new QueryTask().execute(bookUrl);
@@ -47,26 +54,21 @@ public class RecipesListActivity extends AppCompatActivity {
         }
 
         protected void onPostExecute(String result) {
-            TextView tvResult = (TextView) findViewById(R.id.mainTextView);
             TextView tvError = (TextView) findViewById(R.id.errorTextView);
-            tvResult.setText(result);
             dataLoadingProgress.setVisibility(View.INVISIBLE);
             if (result == null) {
-                tvResult.setVisibility(View.INVISIBLE);
+                rvRecipies.setVisibility(View.INVISIBLE);
                 tvError.setVisibility(View.VISIBLE);
             } else {
                 tvError.setVisibility(View.INVISIBLE);
-                tvResult.setVisibility(View.VISIBLE);
+                rvRecipies.setVisibility(View.VISIBLE);
             }
 
             ArrayList<Recipe> recipes = ApiUtil.getRecipesFromJson(result);
             String resultString = "";
-            for (Recipe r : recipes) {
-                resultString += resultString + r.title + "\n" +
-                        r.publishedDate + "\n\n";
-            }
 
-            tvResult.setText(resultString);
+            RecipeAdapter adapter = new RecipeAdapter(recipes);
+            rvRecipies.setAdapter(adapter);
         }
 
         protected void onPreExecute() {

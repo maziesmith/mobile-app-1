@@ -1,7 +1,9 @@
-# mobile-app
+# Recipies Android mobile application
 #### Project done while studying Mobile Operating course during the SCPD Master program
 
 ###### Author: Oana Caplescu
+
+
 
 This project was build using Android Studio :+1: and tested throught development using an Android emulator :iphone:.
 

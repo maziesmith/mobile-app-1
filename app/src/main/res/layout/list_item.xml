@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+    
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_weight="15"
+        android:layout_height="wrap_content"
+        android:src="@drawable/recipe_icon"
+        android:padding="8dp"
+        android:/>
+    
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="85"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvTitle"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/main_text_size"
+            android:text="Oana's title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAuthors"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/secondary_text_size"
+            android:text="Oana's author dummy text" />
+
+        ;<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="70"
+            android:id="@+id/tvPublisher"
+            android:textAlignment="textStart"
+            android:layout_gravity="start"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/secondary_text_size"
+            android:text="Publisher" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:id="@+id/tvDate"
+            android:textAlignment="textEnd"
+            android:layout_gravity="end"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/secondary_text_size"
+            android:text="2018-90-90"
+            android:paddingEnd="@dimen/date_padding"
+            android:paddingRight="@dimen/date_padding"/>
+
+    </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

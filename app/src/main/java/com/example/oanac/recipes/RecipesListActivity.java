@@ -6,14 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+//import android.widget.SearchView;
 import android.widget.TextView;
+import android.support.v7.widget.SearchView;
 
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RecipesListActivity extends AppCompatActivity {
+//import android.support.v4.view.MenuItemCompat;
+//import android.widget.SearchView;
+
+public class RecipesListActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ProgressBar dataLoadingProgress;
     private RecyclerView rvRecipies;
 
@@ -35,6 +42,35 @@ public class RecipesListActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.recipies_list_menu, menu);
+        final MenuItem searchItem = menu.findItem(R.id.actionSearch);
+//        MenuItem search = menu.findItem(R.id.search);
+//        SearchView searchView = (SearchView) search.getActionView();
+        final SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        try {
+            URL bookUrl = ApiUtil.buildApiUrl(query);
+            new QueryTask().execute(bookUrl);
+        }
+        catch(Exception e) {
+            Log.d("Error", e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        return false;
     }
 
     public class QueryTask extends AsyncTask<URL, Void, String> {

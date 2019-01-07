@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Recipes</string>
     <string name="errorDataMessage">Error loading the data from the server...</string>
+    <string name="search_message">Search</string>
 </resources>

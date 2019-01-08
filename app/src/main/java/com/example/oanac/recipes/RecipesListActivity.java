@@ -16,11 +16,6 @@ import android.widget.TextView;
 import java.net.URL;
 import java.util.ArrayList;
 
-//import android.widget.SearchView;
-
-//import android.support.v4.view.MenuItemCompat;
-//import android.widget.SearchView;
-
 public class RecipesListActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private ProgressBar dataLoadingProgress;
     private RecyclerView rvRecipies;

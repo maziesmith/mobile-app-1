@@ -10,6 +10,9 @@
             type="com.example.oanac.recipes.Recipe"/>
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,13 +22,12 @@
             android:id="@+id/imgCover"
             android:layout_width="120dp"
             android:layout_height="111dp"
-            android:layout_marginStart="8dp"
             android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_marginTop="64dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.033"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
             app:srcCompat="@drawable/recipe_icon" />
@@ -34,7 +36,6 @@
             android:id="@+id/tvTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/standard_margin"
             android:layout_marginLeft="@dimen/standard_margin"
             android:layout_marginTop="@dimen/standard_margin"
             android:layout_marginEnd="@dimen/standard_margin"
@@ -49,9 +50,8 @@
             android:id="@+id/tvSubtitle"
             android:layout_width="0dp"
             android:layout_height="20dp"
-            android:layout_marginStart="@dimen/standard_margin"
             android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/standard_margin"
             android:layout_marginEnd="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@{Recipe.subTitle}"
@@ -67,13 +67,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="76dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:text="@{Recipe.authors}"
             android:textSize="@dimen/authors_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
 
@@ -81,14 +77,11 @@
             android:id="@+id/tvPublisher"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/standard_margin"
-            android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:text="@{Recipe.publisher}"
             android:textSize="@dimen/secondary_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvAuthors" />
 
@@ -96,14 +89,11 @@
             android:id="@+id/tvPublishDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/standard_margin"
-            android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:text="@{Recipe.publishedDate}"
             android:textSize="@dimen/secondary_text_size"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvPublisher" />
 
@@ -113,12 +103,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/standard_margin"
             android:layout_marginLeft="@dimen/standard_margin"
-            android:layout_marginTop="@dimen/standard_margin"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@{Recipe.description}"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgCover" />
     </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </layout>

@@ -85,6 +85,7 @@
             android:layout_marginTop="@dimen/standard_margin"
             android:text="@{Recipe.publisher}"
             android:textSize="@dimen/secondary_text_size"
+            android:textColor="@color/colorSecondaryDark"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvAuthors" />
 
@@ -97,7 +98,7 @@
             android:layout_marginTop="@dimen/standard_margin"
             android:text="@{Recipe.publishedDate}"
             android:textSize="@dimen/secondary_text_size"
-            android:textColor="@color/colorThirdDark"
+            android:textColor="@color/colorSecondaryDark"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvPublisher" />
 
@@ -111,7 +112,7 @@
             android:layout_marginEnd="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@{Recipe.description}"
-            android:textColor="@color/colorThirdDark"
+            android:textColor="@color/colorSecondaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgCover" />

@@ -10,7 +10,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -77,6 +76,7 @@ public class ApiUtil {
         final String PUBLISH_DATE = "publishedDate";
         final String ITEMS = "items";
         final String VOLUME_INFO = "volumeInfo";
+        final String DESCRIPTION = "description";
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
         try {
@@ -98,7 +98,8 @@ public class ApiUtil {
                         (volumeInfoJson.isNull(SUB_TITLE) ? "" : volumeInfoJson.getString(SUB_TITLE)),
                         volumeInfoJson.getString(PUBLISHER),
                         volumeInfoJson.getString(PUBLISH_DATE),
-                        authors);
+                        authors,
+                        volumeInfoJson.getString(DESCRIPTION));
                 recipes.add(recipe);
             }
         }

@@ -1,6 +1,7 @@
 package com.example.oanac.recipes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         return recipies.size();
     }
 
-    public class RecipeViewHolder extends RecyclerView.ViewHolder {
+    public class RecipeViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView tvTitle,
                  tvAuthors,
@@ -47,22 +48,23 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
             tvAuthors = (TextView) itemView.findViewById(R.id.tvAuthors);
             tvDate = (TextView) itemView.findViewById(R.id.tvDate);
             tvPublisher = (TextView) itemView.findViewById(R.id.tvPublisher);
+            itemView.setOnClickListener(this);
         }
 
         public void bind(Recipe recipe) {
-            String authors = "";
-            int i = 0;
-            for (String author : recipe.authors) {
-                authors += author;
-                i++;
-                if (i < recipe.authors.length) {
-                    authors += ", ";
-                }
-            }
-            tvAuthors.setText(authors);
+            tvAuthors.setText(recipe.authors);
             tvTitle.setText(recipe.title);
             tvDate.setText(recipe.publishedDate);
             tvPublisher.setText(recipe.publisher);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            Recipe _selectedRecipe =recipies.get(position);
+            Intent intent = new Intent(itemView.getContext(), RecipeDetails.class);
+            intent.putExtra("Recipe", _selectedRecipe);
+            itemView.getContext().startActivity(intent);
         }
     }
 }

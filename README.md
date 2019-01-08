@@ -18,4 +18,6 @@ The layout which is being used is called _Recycler view_ for caching data and re
 
 This is achieved by using am Adapter which gathers the data (from the Google API, in this case) and comunicates directly to a ViewHolder which asks for needed data from the Adapter and displays it accordingly. A custom Adapter and a ViewHolder were created for this mobile application, in order for the RecyclerView to be used. :computer:
 
-Some screenshots of the app can be seen here: ![first](https://github.com/oanacaplescu/mobile-app/tree/master/screenshots/app2.PNG) and ![second](https://github.com/oanacaplescu/mobile-app/tree/master/screenshots/app3.PNG). :iphone:
+Some screenshots of the app can be seen here :iphone:
+
+<img align="left" src="screenshots/app2.PNG"> <img align="right" src="screenshots/app3.PNG">

@@ -5,17 +5,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-//import android.widget.SearchView;
 import android.widget.TextView;
-import android.support.v7.widget.SearchView;
 
 import java.net.URL;
 import java.util.ArrayList;
+
+//import android.widget.SearchView;
 
 //import android.support.v4.view.MenuItemCompat;
 //import android.widget.SearchView;
@@ -40,16 +41,12 @@ public class RecipesListActivity extends AppCompatActivity implements SearchView
         catch (Exception e) {
             Log.d("Error", e.getMessage());
         }
-
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.recipies_list_menu, menu);
         final MenuItem searchItem = menu.findItem(R.id.actionSearch);
-//        MenuItem search = menu.findItem(R.id.search);
-//        SearchView searchView = (SearchView) search.getActionView();
         final SearchView searchView = (SearchView) searchItem.getActionView();
         searchView.setOnQueryTextListener(this);
         return true;
@@ -68,8 +65,18 @@ public class RecipesListActivity extends AppCompatActivity implements SearchView
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
+    public boolean onQueryTextChange(String query) {
+        if (query.equals("")) {
+            query = "cooking";
+        }
 
+        try {
+            URL bookUrl = ApiUtil.buildApiUrl(query);
+            new QueryTask().execute(bookUrl);
+        }
+        catch(Exception e) {
+            Log.d("Error", e.getMessage());
+        }
         return false;
     }
 
@@ -98,13 +105,11 @@ public class RecipesListActivity extends AppCompatActivity implements SearchView
             } else {
                 tvError.setVisibility(View.INVISIBLE);
                 rvRecipies.setVisibility(View.VISIBLE);
+
+                ArrayList<Recipe> recipes = ApiUtil.getRecipesFromJson(result);
+                RecipeAdapter adapter = new RecipeAdapter(recipes);
+                rvRecipies.setAdapter(adapter);
             }
-
-            ArrayList<Recipe> recipes = ApiUtil.getRecipesFromJson(result);
-            String resultString = "";
-
-            RecipeAdapter adapter = new RecipeAdapter(recipes);
-            rvRecipies.setAdapter(adapter);
         }
 
         protected void onPreExecute() {

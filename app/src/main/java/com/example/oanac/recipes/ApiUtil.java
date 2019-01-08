@@ -77,6 +77,8 @@ public class ApiUtil {
         final String ITEMS = "items";
         final String VOLUME_INFO = "volumeInfo";
         final String DESCRIPTION = "description";
+        final String IMAGE_LINKS = "imageLinks";
+        final String THUMBNAIL = "thumbnail";
         ArrayList<Recipe> recipes = new ArrayList<Recipe>();
 
         try {
@@ -86,6 +88,7 @@ public class ApiUtil {
             for (int i = 0; i < numberOfRecipies; i++) {
                 JSONObject recipeJson = arrayRecipes.getJSONObject(i);
                 JSONObject volumeInfoJson = recipeJson.getJSONObject(VOLUME_INFO);
+                JSONObject imageLinksInfoJson = volumeInfoJson.getJSONObject(IMAGE_LINKS);
                 int numberOfAuthors = volumeInfoJson.getJSONArray(AUTHORS).length();
                 String[] authors = new String[numberOfAuthors];
                 for (int j = 0; j < numberOfAuthors; j++) {
@@ -99,7 +102,8 @@ public class ApiUtil {
                         volumeInfoJson.getString(PUBLISHER),
                         volumeInfoJson.getString(PUBLISH_DATE),
                         authors,
-                        volumeInfoJson.getString(DESCRIPTION));
+                        volumeInfoJson.getString(DESCRIPTION),
+                        imageLinksInfoJson.getString(THUMBNAIL));
                 recipes.add(recipe);
             }
         }

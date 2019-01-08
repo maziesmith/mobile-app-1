@@ -1,8 +1,12 @@
 package com.example.oanac.recipes;
 
+import android.databinding.BindingAdapter;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.text.TextUtils;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 public class Recipe implements Parcelable {
     public String id,
@@ -11,9 +15,10 @@ public class Recipe implements Parcelable {
                   publisher,
                   publishedDate,
                   description,
-                  authors;
+                  authors,
+                  thumbnail;
 
-    public Recipe(String id, String title, String subTitle, String publisher, String publishedDate, String[] authors, String description) {
+    public Recipe(String id, String title, String subTitle, String publisher, String publishedDate, String[] authors, String description, String thumbnail) {
         this.id = id;
         this.title = title;
         this.subTitle = subTitle;
@@ -21,6 +26,7 @@ public class Recipe implements Parcelable {
         this.publishedDate = publishedDate;
         this.authors = TextUtils.join(", ", authors);
         this.description = description;
+        this.thumbnail = thumbnail;
     }
 
     protected Recipe(Parcel in) {
@@ -31,6 +37,7 @@ public class Recipe implements Parcelable {
         publishedDate = in.readString();
         authors = in.readString();
         description = in.readString();
+        thumbnail = in.readString();
     }
 
     public static final Creator<Recipe> CREATOR = new Creator<Recipe>() {
@@ -59,5 +66,15 @@ public class Recipe implements Parcelable {
         dest.writeString(publishedDate);
         dest.writeString(authors);
         dest.writeString(description);
+        dest.writeString(thumbnail);
+    }
+
+    @BindingAdapter({"android:imageUrl"})
+    public static void loadImage(ImageView view, String imageUrl) {
+        Picasso.with(view.getContext())
+                .load(imageUrl)
+                .placeholder(R.drawable.recipe_icon)
+                .into(view);
+
     }
 }

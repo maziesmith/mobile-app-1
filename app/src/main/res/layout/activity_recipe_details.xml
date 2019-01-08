@@ -26,11 +26,11 @@
             android:layout_marginTop="@dimen/standard_margin"
             android:layout_marginEnd="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
+            android:imageUrl="@{Recipe.thumbnail}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSubtitle"
-            app:srcCompat="@drawable/recipe_icon" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -42,6 +42,7 @@
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@{Recipe.title}"
             android:textSize="@dimen/title_size"
+            android:textColor="@color/colorPrimaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,6 +57,7 @@
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@{Recipe.subTitle}"
             android:textSize="@dimen/subtitle_size"
+            android:textColor="@color/colorSecondaryDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
@@ -69,6 +71,7 @@
             android:layout_marginTop="@dimen/standard_margin"
             android:layout_marginBottom="@dimen/standard_margin"
             android:text="@{Recipe.authors}"
+            android:textColor="@color/colorThirdDark"
             android:textSize="@dimen/authors_size"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvSubtitle" />
@@ -94,6 +97,7 @@
             android:layout_marginTop="@dimen/standard_margin"
             android:text="@{Recipe.publishedDate}"
             android:textSize="@dimen/secondary_text_size"
+            android:textColor="@color/colorThirdDark"
             app:layout_constraintStart_toEndOf="@+id/imgCover"
             app:layout_constraintTop_toBottomOf="@+id/tvPublisher" />
 
@@ -107,6 +111,7 @@
             android:layout_marginEnd="@dimen/standard_margin"
             android:layout_marginRight="@dimen/standard_margin"
             android:text="@{Recipe.description}"
+            android:textColor="@color/colorThirdDark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgCover" />
